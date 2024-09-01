@@ -1,5 +1,7 @@
 import { hash } from 'bcryptjs'
 
+import { UsersRepository } from '@/repositories/users-repository'
+
 interface RegisterServiceProps {
   name: string
   email: string
@@ -7,7 +9,7 @@ interface RegisterServiceProps {
 }
 
 export class RegisterUserService {
-  constructor(private usersRepository: any) {}
+  constructor(private usersRepository: UsersRepository) {}
 
   async execute({ name, email, password }: RegisterServiceProps) {
     const userAlreadyExists = await this.usersRepository.findByEmail(email)
