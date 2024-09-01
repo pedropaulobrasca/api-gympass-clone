@@ -24,6 +24,7 @@ export default [
       'simple-import-sort/imports': 'error',
       camelcase: 'off',
       '@typescript-eslint/no-unsafe-declaration-merging': 'off',
+      'no-useless-constructor': 'off',
     },
   },
 ]
