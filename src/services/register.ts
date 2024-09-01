@@ -7,7 +7,7 @@ interface RegisterServiceProps {
   password: string
 }
 
-export async function registerService({name, email, password}: RegisterServiceProps) {
+export async function registerUserService({name, email, password}: RegisterServiceProps) {
   const password_hash = await hash(password, 6)
 
   const userWithSameEmail = await prisma.user.findUnique({
