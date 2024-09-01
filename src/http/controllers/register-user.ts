@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 import z from 'zod'
 
-import { registerUserService } from '@/services/register'
+import { registerUserService } from '@/services/register-user'
 
 export async function registerUser(
   request: FastifyRequest,
