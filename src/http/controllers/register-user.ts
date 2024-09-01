@@ -16,7 +16,7 @@ export async function registerUser(
   const { name, email, password } = registerBodySchema.parse(request.body)
 
   try {
-    registerUserService({ name, email, password })
+    await registerUserService({ name, email, password })
   } catch (error) {
     return reply.status(409).send()
   }
