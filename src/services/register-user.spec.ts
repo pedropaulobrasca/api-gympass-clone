@@ -47,15 +47,13 @@ describe('Register Service', () => {
 
     const email = 'johndoe@acme.com'
 
-    const { user } = await registerUserService.execute({
+    await registerUserService.execute({
       name: 'John Doe',
       email,
       password: '123456',
     })
 
-    console.log('user', user)
-
-    expect(async () => {
+    await expect(async () => {
       await registerUserService.execute({
         name: 'John Doe',
         email,
