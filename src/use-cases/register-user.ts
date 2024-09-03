@@ -5,24 +5,24 @@ import { UsersRepository } from '@/repositories/users-repository'
 
 import { UserAlreadyExistsError } from './errors/user-already-exists-error'
 
-interface RegisterServiceProps {
+interface RegisterUseCaseProps {
   name: string
   email: string
   password: string
 }
 
-interface RegisterUserServiceResponse {
+interface RegisterUserUseCaseResponse {
   user: User
 }
 
-export class RegisterUserService {
+export class RegisterUserUseCase {
   constructor(private usersRepository: UsersRepository) {}
 
   async execute({
     name,
     email,
     password,
-  }: RegisterServiceProps): Promise<RegisterUserServiceResponse> {
+  }: RegisterUseCaseProps): Promise<RegisterUserUseCaseResponse> {
     const userAlreadyExists = await this.usersRepository.findByEmail(email)
 
     if (userAlreadyExists) {

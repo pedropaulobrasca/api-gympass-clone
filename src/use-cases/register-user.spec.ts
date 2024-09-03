@@ -4,17 +4,17 @@ import { describe, expect, it } from 'vitest'
 import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
 
 import { UserAlreadyExistsError } from './errors/user-already-exists-error'
-import { RegisterUserService } from './register-user'
+import { RegisterUserUseCase } from './register-user'
 
 // Test unitario ele serve para testar uma unidade totalmente isolada do sistema
 // Ou seja ele não depende de nenhuma outra parte do sistema para ser testado
 
-describe('Register Service', () => {
+describe('Register Use Case', () => {
   it('should hash user password upon registration', async () => {
     const inMemoryUsersRepository = new InMemoryUsersRepository()
-    const registerUserService = new RegisterUserService(inMemoryUsersRepository)
+    const registerUserUseCase = new RegisterUserUseCase(inMemoryUsersRepository)
 
-    const { user } = await registerUserService.execute({
+    const { user } = await registerUserUseCase.execute({
       name: 'John Doe',
       email: 'johndoe@acme.com',
       password: '123456',
@@ -30,7 +30,7 @@ describe('Register Service', () => {
 
   it('should to register', async () => {
     const inMemoryUsersRepository = new InMemoryUsersRepository()
-    const registerUseCase = new RegisterUserService(inMemoryUsersRepository)
+    const registerUseCase = new RegisterUserUseCase(inMemoryUsersRepository)
 
     const { user } = await registerUseCase.execute({
       name: 'John Doe',
@@ -43,18 +43,18 @@ describe('Register Service', () => {
 
   it('should throw an error if user already exists', async () => {
     const inMemoryUsersRepository = new InMemoryUsersRepository()
-    const registerUserService = new RegisterUserService(inMemoryUsersRepository)
+    const registerUserUseCase = new RegisterUserUseCase(inMemoryUsersRepository)
 
     const email = 'johndoe@acme.com'
 
-    await registerUserService.execute({
+    await registerUserUseCase.execute({
       name: 'John Doe',
       email,
       password: '123456',
     })
 
     await expect(async () => {
-      await registerUserService.execute({
+      await registerUserUseCase.execute({
         name: 'John Doe',
         email,
         password: '123456',
