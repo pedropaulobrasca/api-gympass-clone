@@ -1,0 +1,19 @@
+meta {
+  name: register-user
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3333/users
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Pedro Paulo",
+    "email": "pedropaulobrasca@gmail.com",
+    "password": "123asd"
+  }
+}
