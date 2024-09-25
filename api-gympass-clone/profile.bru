@@ -1,0 +1,18 @@
+meta {
+  name: profile
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{url}}/me
+  body: none
+  auth: none
+}
+
+body:json {
+  {
+    "email": "pedropaulobrasca@gmail.com",
+    "password": "123asd"
+  }
+}

@@ -1,0 +1,22 @@
+meta {
+  name: authenticate
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{url}}/sessions
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "pedropaulobrasca@gmail.com",
+    "password": "123asd"
+  }
+}
+
+script:post-response {
+  bru.setEnvVar("token",res.body.token)
+}
