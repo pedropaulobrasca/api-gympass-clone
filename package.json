@@ -8,10 +8,9 @@
     "start": "node build/server.js",
     "build": "tsup src --out-dir build",
     "lint": "eslint **/*.ts",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage",
-    "test:ui": "pnpm dlx vite preview --outDir html"
+    "test": "vitest run --dir src/use-cases",
+    "test:watch": "vitest --dir src/use-cases",
+    "test:e2e": "vitest run --dir src/http"
   },
   "keywords": [],
   "author": "",
