@@ -10,6 +10,10 @@ get {
   auth: none
 }
 
+headers {
+  authorization: Bearer {{token}}
+}
+
 body:json {
   {
     "email": "pedropaulobrasca@gmail.com",
