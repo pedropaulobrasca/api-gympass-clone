@@ -1,7 +1,7 @@
 meta {
   name: profile
   type: http
-  seq: 4
+  seq: 3
 }
 
 get {
@@ -19,4 +19,8 @@ body:json {
     "email": "pedropaulobrasca@gmail.com",
     "password": "123asd"
   }
+}
+
+script:post-response {
+  bru.setEnvVar("userId",res.body.user.id)
 }
