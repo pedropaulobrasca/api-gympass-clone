@@ -1,17 +1,17 @@
 meta {
-  name: profile
+  name: refresh-token
   type: http
-  seq: 4
+  seq: 3
 }
 
-get {
-  url: {{url}}/me
-  body: none
+patch {
+  url: {{url}}/token/refresh
+  body: json
   auth: none
 }
 
 headers {
-  authorization: Bearer {{token}}
+  Cookie: refreshToken={{refreshToken}}
 }
 
 body:json {
@@ -22,5 +22,5 @@ body:json {
 }
 
 script:post-response {
-  bru.setEnvVar("userId",res.body.user.id)
+  bru.setEnvVar("token",res.body.token)
 }

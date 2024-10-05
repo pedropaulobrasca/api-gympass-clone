@@ -1,11 +1,11 @@
 meta {
   name: create-check-in
   type: http
-  seq: 4
+  seq: 5
 }
 
 post {
-  url: {{url}}/gyms/{{userId}}/check-ins
+  url: {{url}}/gyms/{{createdGymId}}/check-ins
   body: json
   auth: none
 }
