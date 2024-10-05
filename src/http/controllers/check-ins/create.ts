@@ -5,7 +5,7 @@ import { makeCheckInUseCase } from '@/use-cases/factories/make-check-in-use.case
 
 export async function create(request: FastifyRequest, reply: FastifyReply) {
   const createCheckInParamsSchema = z.object({
-    gymId: z.string().uuid(),
+    gymId: z.string(),
   })
 
   const createCheckInBodySchema = z.object({
