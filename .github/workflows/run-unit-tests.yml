@@ -6,7 +6,6 @@ jobs:
   run-unit-tests:
     runs-on: ubuntu-latest
 
-    # Rodar o node.js
     steps:
       - uses: actions/checkout@v4
 
@@ -15,6 +14,10 @@ jobs:
           node-version: '20'
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
       - run: pnpm install
 
